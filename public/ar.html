@@ -20,20 +20,18 @@
     <a-scene embedded vr-mode-ui="enabled: false"
         arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
         <a-assets>
-            <a-asset-item id="animated-asset" src="models/solar6.glb"></a-asset-item>
-            <a-asset-item id="animated-asset1"
-                src="https://raw.githubusercontent.com/prashant-andani/3d-models/master/axe/scene.gltf">
+            <a-asset-item id="animated-asset"
+                src="">
             </a-asset-item>
         </a-assets>
         <a-marker id="animated-marker" value='6' emitevents="true" cursor="rayOrigin: mouse" markerhandler>
-            <a-entity animation-mixer="loop:repeat" gltf-model="#animated-asset1" scale="0.1 0.1 0.1">
+            <a-entity animation-mixer="loop:repeat" gltf-model="#animated-asset" scale="0.1 0.1 0.1">
             </a-entity>
         </a-marker>
         <a-entity camera></a-entity>
     </a-scene>
     <div class="change-button">
-        <button ng-click="openSearch()" class="btn btn-primary">Click to
-            change</button>
+        <button ng-click="goBack()" class="btn btn-primary">Back</button>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

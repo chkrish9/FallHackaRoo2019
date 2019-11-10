@@ -3,13 +3,39 @@ var app = angular.module("eduLerApp", []);
 app.controller("appCtrl", function ($scope, $window) {
     $scope.isDev = false;
     $scope.url = "";
-     
+    $scope.models = [
+        {
+            "location":"modles/solar6.glb",
+            "animation":"true",
+            "scale":"2 2 2",
+            "name":"Solar",
+            "_id":0
+        },
+        {
+            "location":"https://raw.githubusercontent.com/prashant-andani/3d-models/master/axe/scene.gltf",
+            "animation":"false",
+            "scale":"0.1 0.1 0.1",
+            "name":"Axe",
+            "_id":1
+        },
+        {
+            "location":"https://raw.githubusercontent.com/prashant-andani/3d-models/master/cow/scene.gltf",
+            "animation":"false",
+            "scale":"0.1 0.1 0.1",
+            "name":"Cow",
+            "_id":2
+        }
+    ]; 
     $scope.init = function () {
         if ($scope.isDev) {
             $scope.url = "http://localhost:3002/";
         } else {
             $scope.url = "https://fallhackathon19.herokuapp.com/";
         }
+        
+        // localStorage.setItem("location","modles/solar6.glb");
+        // localStorage.setItem("animation","true");
+        // localStorage.setItem("scale","2 2 2");
         // $http.get($scope.url + "getTop")
         //     .then(function (response) {
         //         $scope.results = response.data;
@@ -30,26 +56,15 @@ app.controller("appCtrl", function ($scope, $window) {
         //     window.addEventListener('online',  updateOnlineMsg);
         //     window.addEventListener('offline', updateOfflineMsg);
         // }
-        $("#animated-model1").attr("visible",false);
-        AFRAME.registerComponent('markerhandler', {
-
-            init: function() {
-                const animatedMarker = document.querySelector("#animated-marker");
-                const aEntity = document.querySelector("#animated-model");
-        
-                // every click, we make our model grow in size :)
-                animatedMarker.addEventListener('click', function(ev, target){
-                    const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
-                    if (aEntity && intersectedElement === aEntity) {
-                        const scale = aEntity.getAttribute('scale');
-                        Object.keys(scale).forEach((key) => scale[key] = scale[key] + 1);
-                        aEntity.setAttribute('scale', scale);
-                    }
-                });
-        }});
-
     }
 
+    $scope.navigateToAR =function(id){
+        let model = $scope.models[id];
+        localStorage.setItem("location",model.location);
+        localStorage.setItem("animation",model.animation);
+        localStorage.setItem("scale",model.scale);
+        window.location.href="ar.html";
+    }
     $scope.openSearch = function () {
        $scope.dialog.showModal();
     }

@@ -14,8 +14,37 @@
 </head>
 
 <body style='margin : 0px; overflow: hidden;' ng-app="eduLerApp" ng-controller="appCtrl">
-    <a class="btn btn-primary" href="ar.html">Click to View the AR</a>
-
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">EduLer</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            </div>
+        </div>
+    </nav>
+    <div>
+        <div class="col-sm-12">
+            <h4>Top 10 Games</h4>
+        </div>
+        <div class="col-sm-3" ng-repeat="model in models">
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp" ng-click="navigateToAR(model._id)">
+                <div class="mdl-card__title">
+                        {{model.name}}
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <p class="text-ellipsis" title="{{result.names}}">Name : {{model.name}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>

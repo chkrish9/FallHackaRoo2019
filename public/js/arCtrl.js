@@ -10,7 +10,7 @@ app.controller("arCtrl", function ($scope, $window) {
         } else {
             $scope.url = "https://fallhackathon19.herokuapp.com/";
         }
-        $("#animated-model1").attr("visible", false);
+        $scope.populate();
         AFRAME.registerComponent('markerhandler', {
             init: function () {
                 // const animatedMarker = document.querySelector("#animated-marker");
@@ -30,34 +30,26 @@ app.controller("arCtrl", function ($scope, $window) {
 
     }
 
-    $scope.openSearch = function () {
-        var html = "<a-entity" +
-            " animation-mixer='loop:repeat'" +
-            " id='animated-model'" +
+    $scope.goBack=function(){
+        window.location.href="index.html";
+    }
+    $scope.populate = function () {
+        let loc = localStorage.getItem("location");
+        let ani = localStorage.getItem("animation");
+        let scale = localStorage.getItem("scale");
+        $("#animated-asset").attr("src", loc);
+        var html = "<a-entity"
+        if (ani === "true")
+            html += " animation-mixer='loop:repeat'";
+        html += " id='animated-model'" +
             " gltf-model='#animated-asset'" +
-            " scale='2 2 2'>" +
+            " scale='" + scale + "'>" +
             "</a-entity>";
         $("#animated-marker").html("");
         $("#animated-marker").html(html);
     }
 
-    $scope.search = function () {
-        if ($scope.age === "" && $scope.max_players === "" && $scope.avg_time === "" && $scope.category === "") {
-            $scope.dialog.close();
-        }
-        else {
-            $http.get($scope.url + "search?category=" + $scope.category + "&max_players=" + $scope.max_players + "&avg_time=" + $scope.avg_time + "&age=" + $scope.age)
-                .then(function (response) {
-                    console.log(response.data);
-                    $scope.results = response.data;
-                    $scope.age = "";
-                    $scope.max_players = "";
-                    $scope.avg_time = "";
-                    $scope.category = "";
-                    $scope.dialog.close();
-                });
-        }
-    }
+  
 
     $scope.init();
 });
