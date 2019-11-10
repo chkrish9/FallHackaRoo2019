@@ -13,7 +13,6 @@ const app = express();
 //Connecting to database.
 mongoose.connect('mongodb+srv://admin:admin@cluster0-cgnbq.mongodb.net/test?retryWrites=true&w=majority');
 
-
 //On Database Connected, displaying the database connected message on console.
 mongoose.connection.on('connected', () => {
     console.log("Database :EduLer connection successfully");
