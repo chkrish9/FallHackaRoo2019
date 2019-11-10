@@ -14,16 +14,10 @@
         <a-assets>
             <a-asset-item id="animated-asset" src="models/solar3.glb"></a-asset-item>
         </a-assets>
-
-        <a-marker type='barcode' value='7'>
-            <a-box position='0 0.5 0' color="yellow"></a-box>
-        </a-marker>
-
         <a-marker id="animated-marker" value='6'>
             <a-entity
-                animation-mixer
                 gltf-model="#animated-asset"
-                scale="2 2 2">
+                scale="2">
             </a-entity>
         </a-marker>
 
