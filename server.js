@@ -6,15 +6,9 @@ const bodyParser = require('body-parser');
 // const toDoRoutes = require('./routes/todo.js');
 const cors = require("cors");
 
-const port = 3000;
+const port = process.env.PORT ||3000;
 
 const app = express();
-
-
-// mongoose.connect()
-// .then(() => {
-//   console.log('Connected');
-// })
 
 //Connecting to database.
 mongoose.connect('mongodb+srv://admin:admin@cluster0-cgnbq.mongodb.net/test?retryWrites=true&w=majority');
