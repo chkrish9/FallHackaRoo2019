@@ -23,6 +23,10 @@
 
 **Web APP URL :** https://fallhackathon19.herokuapp.com/
 
+**Scan me:**
+
+![Demo](https://github.com/chkrish9/FallHackaRoo2019/blob/master/Screenshots/QRCode.png)
+
 ## Reference:
 
 https://www.youtube.com/watch?v=w2pw8eVq_Qk (File uploading)
