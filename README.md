@@ -1,7 +1,7 @@
 # FallHackaRoo2019
 # EDULER:
 
-  EduLer is the acronym for Education and Learning. This app is implemented with augmented reality using ar.js and a-frame. 
+  EduLer is the acronym for Education and Learning. This app is implemented using ar.js, a-frame and MEAN Stack. 
 
 ## TEAM MEMBERS:
 
