@@ -15,21 +15,19 @@
 
 **Member 3:** Pravalhika Kampally 
 
-
 **Video URL :** https://youtu.be/IHORFBmowIA or https://drive.google.com/drive/folders/17WosCDjrWDZ1IOJCw1IrJ-FjcGRXzis4
-
 
 **PPT URL :** https://drive.google.com/drive/folders/17WosCDjrWDZ1IOJCw1IrJ-FjcGRXzis4
 
 **Web APP URL :** https://fallhackathon19.herokuapp.com/
 
-**Marker Image:**
-
-![Marker](https://github.com/chkrish9/FallHackaRoo2019/blob/master/Screenshots/hiro.png)
-
 **Scan me:**
 
 ![Demo](https://github.com/chkrish9/FallHackaRoo2019/blob/master/Screenshots/QRCode.png)
+
+**Marker Image:**
+
+![Marker](https://github.com/chkrish9/FallHackaRoo2019/blob/master/Screenshots/hiro.png)
 
 ## Reference:
 
