@@ -1,7 +1,7 @@
 var app = angular.module("eduLerApp", []);
 
 app.controller("appCtrl", function ($scope, $http, $window) {
-    $scope.isDev = true;
+    $scope.isDev = false;
     $scope.url = "";
     $scope.models = [];
     $scope.init = function () {

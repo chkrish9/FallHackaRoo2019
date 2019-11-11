@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require("cors");
 const Model = require("./models/model");
+//const upload = require('./config/upload').upload;
 
 const port = process.env.PORT || 3000;
 
@@ -50,6 +51,30 @@ app.post("/create", (req, res, next) => {
     }
   });
 });
+
+var multer = require('multer');
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname+'/uploads'))
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '_' + file.originalname);
+  }
+});
+var upload = multer({ storage: storage });
+
+//app.post('/multer', upload.single('file'));
+
+app.post('/multer', upload.single('file'), (req, res, next) => {
+  const file = req.file
+  if (!file) {
+    const error = new Error('Please upload a file')
+    error.httpStatusCode = 400
+    return next(error)
+  }
+  res.send(file)
+
+})
 
 //Static folder
 app.use(express.static(path.join(__dirname, 'public')));

@@ -1,7 +1,7 @@
 var app = angular.module("eduLerApp", []);
 
 app.controller("arCtrl", function ($scope, $window) {
-    $scope.isDev = true;
+    $scope.isDev = false;
     $scope.url = "";
 
     $scope.init = function () {
