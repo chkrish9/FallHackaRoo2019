@@ -50,7 +50,7 @@ app.controller("addCtrl", function ($scope, $http, $window) {
 
     $scope.addModel = function () {
         console.log($scope.model);
-        $scope.modal.published = true;
+        $scope.model.published = true;
         $http({
             method: 'POST',
             url: $scope.url + "create",
