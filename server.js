@@ -47,7 +47,7 @@ app.get("/getall", (req, res, next) => {
       "animation": "true",
       "scale": "2 2 2",
       "name": "Solar",
-      "thumbnail": "./images/solar.png",
+      "thumbnail": "./images/solar.PNG",
       "_id": 0
     },
     {
@@ -55,7 +55,7 @@ app.get("/getall", (req, res, next) => {
       "animation": "false",
       "scale": "0.1 0.1 0.1",
       "name": "Axe",
-      "thumbnail": "./images/axe.png",
+      "thumbnail": "./images/axe.PNG",
       "_id": 1
     },
     {
@@ -63,7 +63,7 @@ app.get("/getall", (req, res, next) => {
       "animation": "false",
       "scale": "0.1 0.1 0.1",
       "name": "Cow",
-      "thumbnail": "./images/cow.png",
+      "thumbnail": "./images/cow.PNG",
       "_id": 2
     }
   ];
