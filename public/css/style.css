@@ -40,3 +40,8 @@
 .clear{
   margin-top:20px;
 }
+
+.bckimg{
+	background-size:cover!important;
+	background-position:center!important;
+}
