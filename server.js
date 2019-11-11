@@ -4,6 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require("cors");
+const Model = require("./models/model");
 
 const port = process.env.PORT || 3000;
 
@@ -19,66 +20,39 @@ mongoose.connection.on('connected', () => {
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
-
+// parse application/json
+app.use(bodyParser.json())
 app.use(cors());
 
 //Get method is used to fetch the data.
 app.get("/getall", (req, res, next) => {
-  // //Connecting the mongodb
-  // MongoClient.connect(url,{ useNewUrlParser: true }, function (err, client) {
-  //     //If connection failed the it will go to if condition.
-  //     if (err) {
-  //         res.send(JSON.stringify(err));
-  //         res.end();
-  //     }
-  //     const db = client.db(dbName);
-  //     db.collection('game').find().sort( { geek_rating: -1 } ).limit(10).toArray(function (err, result) {
-  //         if (err) {
-  //             res.write("fetching  top 10 games failed");
-  //             res.end();
-  //         } else {
-  //             res.send(JSON.stringify(result));
-  //         }
-  //     });
-  // });
-  var result = [
-    {
-      "location": "models/solar6.glb",
-      "animation": "true",
-      "scale": "2 2 2",
-      "name": "Solar",
-      "thumbnail": "./images/solar.PNG",
-      "_id": 0
-    },
-    {
-      "location": "https://raw.githubusercontent.com/prashant-andani/3d-models/master/axe/scene.gltf",
-      "animation": "false",
-      "scale": "0.1 0.1 0.1",
-      "name": "Axe",
-      "thumbnail": "./images/axe.PNG",
-      "_id": 1
-    },
-    {
-      "location": "https://raw.githubusercontent.com/prashant-andani/3d-models/master/cow/scene.gltf",
-      "animation": "false",
-      "scale": "0.1 0.1 0.1",
-      "name": "Cow",
-      "thumbnail": "./images/cow.PNG",
-      "_id": 2
-    }
-  ];
-  res.send(JSON.stringify(result));
+  Model.getPublishedModels((err, data) => {
+    res.json(data);
+  });
 });
-// parse application/json
-app.use(bodyParser.json())
 
-
-
+//Post method is used to add the student in the database.
+app.post("/create", (req, res, next) => {
+  let model = new Model({
+    location: req.body.location,
+    animation: req.body.animation,
+    scale: req.body.scale,
+    name: req.body.name,
+    thumbnail: req.body.thumbnail,
+    published: req.body.published
+  });
+  //console.log(model);
+  Model.addModel(model, (err, user) => {
+    if (err) {
+      res.json({ success: false, msg: "Failed to Add Model." });
+    } else {
+      res.json({ success: true, msg: "Model Added." });
+    }
+  });
+});
 
 //Static folder
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 
 //Required for navigating angular routes without server routes
 app.all('*', (req, res) => {

@@ -1,7 +1,7 @@
 var app = angular.module("eduLerApp", []);
 
 app.controller("appCtrl", function ($scope, $http, $window) {
-    $scope.isDev = false;
+    $scope.isDev = true;
     $scope.url = "";
     $scope.models = [];
     $scope.init = function () {
@@ -36,8 +36,7 @@ app.controller("appCtrl", function ($scope, $http, $window) {
         // }
     }
 
-    $scope.navigateToAR = function (id) {
-        let model = $scope.models[id];
+    $scope.navigateToAR = function (model) {
         localStorage.setItem("location", model.location);
         localStorage.setItem("animation", model.animation);
         localStorage.setItem("scale", model.scale);
