@@ -5,7 +5,7 @@ app.controller("appCtrl", function ($scope, $window) {
     $scope.url = "";
     $scope.models = [
         {
-            "location":"modles/solar6.glb",
+            "location":"models/solar6.glb",
             "animation":"true",
             "scale":"2 2 2",
             "name":"Solar",
@@ -28,12 +28,12 @@ app.controller("appCtrl", function ($scope, $window) {
     ]; 
     $scope.init = function () {
         if ($scope.isDev) {
-            $scope.url = "http://localhost:3002/";
+            $scope.url = "http://localhost:3000/";
         } else {
             $scope.url = "https://fallhackathon19.herokuapp.com/";
         }
         
-        // localStorage.setItem("location","modles/solar6.glb");
+        // localStorage.setItem("location","models/solar6.glb");
         // localStorage.setItem("animation","true");
         // localStorage.setItem("scale","2 2 2");
         // $http.get($scope.url + "getTop")

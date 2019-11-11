@@ -6,7 +6,7 @@ app.controller("arCtrl", function ($scope, $window) {
 
     $scope.init = function () {
         if ($scope.isDev) {
-            $scope.url = "http://localhost:3002/";
+            $scope.url = "http://localhost:3000/";
         } else {
             $scope.url = "https://fallhackathon19.herokuapp.com/";
         }
