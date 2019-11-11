@@ -27,6 +27,19 @@ app.controller("arCtrl", function ($scope, $window) {
                 // });
             }
         });
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('../service-worker.js');
+            });
+            function updateOfflineMsg(event) {
+                $scope.offline = true;
+            }
+            function updateOnlineMsg(event) {
+                $scope.offline = false;
+            }
+            window.addEventListener('online',  updateOnlineMsg);
+            window.addEventListener('offline', updateOfflineMsg);
+        }
 
     }
 

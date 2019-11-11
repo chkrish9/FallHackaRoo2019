@@ -83,6 +83,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.all('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
+
+app.get("/service-worker.js", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "public", "service-worker.js"));
+});
 const server = http.createServer(app);
 const io = require('socket.io').listen(server);
 app.set('io', io);

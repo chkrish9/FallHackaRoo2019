@@ -31,6 +31,21 @@ app.controller("addCtrl", function ($scope, $http, $window) {
                 $(".modal-title").html("Success");
             }
         })
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('../service-worker.js');
+            });
+            function updateOfflineMsg(event) {
+                $scope.offline = true;
+            }
+            function updateOnlineMsg(event) {
+                $scope.offline = false;
+            }
+            window.addEventListener('online',  updateOnlineMsg);
+            window.addEventListener('offline', updateOfflineMsg);
+        }
+
     }
 
     $scope.addModel = function () {
