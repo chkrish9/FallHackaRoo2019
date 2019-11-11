@@ -33,9 +33,8 @@
     <div>
         <div class="col-sm-3" ng-repeat="model in models">
             <div class="demo-card-wide mdl-card mdl-shadow--2dp" ng-click="navigateToAR(model._id)">
-                <div class="mdl-card__title">
-                        {{model.name}}
-                </div>
+                    <div class="mdl-card__title" style="background: url('{{model.thumbnail}}') center / cover">
+                    </div>
                 <div class="mdl-card__supporting-text">
                     <p class="text-ellipsis" title="{{result.names}}">Name : {{model.name}}</p>
                 </div>

@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require("cors");
 
-const port = process.env.PORT ||3000;
+const port = process.env.PORT || 3000;
 
 const app = express();
 
@@ -14,12 +14,12 @@ mongoose.connect('mongodb+srv://admin:admin@cluster0-cgnbq.mongodb.net/test?retr
 
 //On Database Connected, displaying the database connected message on console.
 mongoose.connection.on('connected', () => {
-    console.log("Database :EduLer connection successfully");
+  console.log("Database :EduLer connection successfully");
 });
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
- 
+
 app.use(cors());
 
 //Get method is used to fetch the data.
@@ -43,27 +43,30 @@ app.get("/getall", (req, res, next) => {
   // });
   var result = [
     {
-        "location":"models/solar6.glb",
-        "animation":"true",
-        "scale":"2 2 2",
-        "name":"Solar",
-        "_id":0
+      "location": "models/solar6.glb",
+      "animation": "true",
+      "scale": "2 2 2",
+      "name": "Solar",
+      "thumbnail": "images/solar.png",
+      "_id": 0
     },
     {
-        "location":"https://raw.githubusercontent.com/prashant-andani/3d-models/master/axe/scene.gltf",
-        "animation":"false",
-        "scale":"0.1 0.1 0.1",
-        "name":"Axe",
-        "_id":1
+      "location": "https://raw.githubusercontent.com/prashant-andani/3d-models/master/axe/scene.gltf",
+      "animation": "false",
+      "scale": "0.1 0.1 0.1",
+      "name": "Axe",
+      "thumbnail": "images/axe.png",
+      "_id": 1
     },
     {
-        "location":"https://raw.githubusercontent.com/prashant-andani/3d-models/master/cow/scene.gltf",
-        "animation":"false",
-        "scale":"0.1 0.1 0.1",
-        "name":"Cow",
-        "_id":2
+      "location": "https://raw.githubusercontent.com/prashant-andani/3d-models/master/cow/scene.gltf",
+      "animation": "false",
+      "scale": "0.1 0.1 0.1",
+      "name": "Cow",
+      "thumbnail": "images/cow.png",
+      "_id": 2
     }
-];
+  ];
   res.send(JSON.stringify(result));
 });
 // parse application/json
