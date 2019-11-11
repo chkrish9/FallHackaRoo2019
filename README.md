@@ -16,7 +16,8 @@
 **Member 3:** Pravalhika Kampally 
 
 
-**Video URL :** https://youtu.be/Q2aKX07WZww
+**Video URL :** https://www.youtube.com/watch?v=IHORFBmowIA&t=24s or https://drive.google.com/drive/folders/17WosCDjrWDZ1IOJCw1IrJ-FjcGRXzis4
+
 
 **PPT URL :** https://drive.google.com/drive/folders/17WosCDjrWDZ1IOJCw1IrJ-FjcGRXzis4
 
