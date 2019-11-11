@@ -24,7 +24,8 @@
 
 ## Reference:
 
-https://embed.plnkr.co/plunk/1esaGq (Rating directive)
+https://www.youtube.com/watch?v=w2pw8eVq_Qk (File uploading)
 
 https://www.youtube.com/watch?v=gcx-3qi7t7c&t=1064s (PWA)
 
+https://medium.com/@akashkuttappa/using-3d-models-with-ar-js-and-a-frame-84d462efe498 (Ar.js and A-FRAME)
