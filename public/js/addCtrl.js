@@ -48,7 +48,7 @@ app.controller("addCtrl", function ($scope, $http, $window) {
         }).then(function successCallback(response) {
             console.log(response.data);
             let data = response.data;
-            $scope.model.thumbnail = "../uploads/"+data.filename;
+            $scope.model.thumbnail = "./images/"+data.filename;
         }, function errorCallback(response) {
             console.log(response);
         });
