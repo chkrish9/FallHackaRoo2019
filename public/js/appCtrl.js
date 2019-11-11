@@ -1,45 +1,23 @@
 var app = angular.module("eduLerApp", []);
 
-app.controller("appCtrl", function ($scope, $window) {
+app.controller("appCtrl", function ($scope, $http, $window) {
     $scope.isDev = false;
     $scope.url = "";
-    $scope.models = [
-        {
-            "location":"models/solar6.glb",
-            "animation":"true",
-            "scale":"2 2 2",
-            "name":"Solar",
-            "_id":0
-        },
-        {
-            "location":"https://raw.githubusercontent.com/prashant-andani/3d-models/master/axe/scene.gltf",
-            "animation":"false",
-            "scale":"0.1 0.1 0.1",
-            "name":"Axe",
-            "_id":1
-        },
-        {
-            "location":"https://raw.githubusercontent.com/prashant-andani/3d-models/master/cow/scene.gltf",
-            "animation":"false",
-            "scale":"0.1 0.1 0.1",
-            "name":"Cow",
-            "_id":2
-        }
-    ]; 
+    $scope.models = [];
     $scope.init = function () {
         if ($scope.isDev) {
             $scope.url = "http://localhost:3000/";
         } else {
             $scope.url = "https://fallhackathon19.herokuapp.com/";
         }
-        
+
         // localStorage.setItem("location","models/solar6.glb");
         // localStorage.setItem("animation","true");
         // localStorage.setItem("scale","2 2 2");
-        // $http.get($scope.url + "getTop")
-        //     .then(function (response) {
-        //         $scope.results = response.data;
-        //     });
+        $http.get($scope.url + "getall")
+            .then(function (response) {
+                $scope.models = response.data;
+            });
         // if (!$scope.dialog.showModal) {
         //     dialogPolyfill.registerDialog($scope.dialog);
         // }
@@ -58,15 +36,15 @@ app.controller("appCtrl", function ($scope, $window) {
         // }
     }
 
-    $scope.navigateToAR =function(id){
+    $scope.navigateToAR = function (id) {
         let model = $scope.models[id];
-        localStorage.setItem("location",model.location);
-        localStorage.setItem("animation",model.animation);
-        localStorage.setItem("scale",model.scale);
-        window.location.href="ar.html";
+        localStorage.setItem("location", model.location);
+        localStorage.setItem("animation", model.animation);
+        localStorage.setItem("scale", model.scale);
+        window.location.href = "ar.html";
     }
     $scope.openSearch = function () {
-       $scope.dialog.showModal();
+        $scope.dialog.showModal();
     }
 
     $scope.search = function () {
