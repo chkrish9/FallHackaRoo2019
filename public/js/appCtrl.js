@@ -11,29 +11,10 @@ app.controller("appCtrl", function ($scope, $http, $window) {
             $scope.url = "https://fallhackathon19.herokuapp.com/";
         }
 
-        // localStorage.setItem("location","models/solar6.glb");
-        // localStorage.setItem("animation","true");
-        // localStorage.setItem("scale","2 2 2");
         $http.get($scope.url + "getall")
             .then(function (response) {
                 $scope.models = response.data;
             });
-        // if (!$scope.dialog.showModal) {
-        //     dialogPolyfill.registerDialog($scope.dialog);
-        // }
-        // if ('serviceWorker' in navigator) {
-        //     window.addEventListener('load', function () {
-        //         navigator.serviceWorker.register('../service-worker.js');
-        //     });
-        //     function updateOfflineMsg(event) {
-        //         $scope.offline = true;
-        //     }
-        //     function updateOnlineMsg(event) {
-        //         $scope.offline = false;
-        //     }
-        //     window.addEventListener('online',  updateOnlineMsg);
-        //     window.addEventListener('offline', updateOfflineMsg);
-        // }
     }
 
     $scope.navigateToAR = function (model) {

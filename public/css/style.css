@@ -110,3 +110,7 @@
     -ms-transform: translateX(26px);
     transform: translateX(26px);
   }
+.modal-header{
+    color: #fff;
+    background: green;
+  }

@@ -2,6 +2,7 @@ var app = angular.module("eduLerApp", []);
 
 app.controller("addCtrl", function ($scope, $http, $window) {
     $scope.isDev = false;
+    $scope.isSave = false;
     $scope.url = "";
     $scope.model = {
         "location": "",
@@ -19,6 +20,17 @@ app.controller("addCtrl", function ($scope, $http, $window) {
             $scope.url = "https://fallhackathon19.herokuapp.com/";
         }
         console.log($scope.model);
+
+        $('#modalDlg').on('show.bs.modal', function (e) {
+            console.log("open");
+            if($scope.isSave){
+                $("#msg").html("Model create successfully.");
+                $(".modal-title").html("Success");
+            }else{
+                $("#msg").html("File uploaded successfully.");
+                $(".modal-title").html("Success");
+            }
+        })
     }
 
     $scope.addModel = function () {
@@ -31,24 +43,28 @@ app.controller("addCtrl", function ($scope, $http, $window) {
         }).then(function successCallback(response) {
             console.log(response.data);
             $scope.clear();
+            $scope.isSave = true;
+            $("#modalDlg").modal("show");
         }, function errorCallback(response) {
             console.log(response);
         });
     }
-   $scope.uploadFile = function(){
+    $scope.uploadFile = function () {
 
         var file = $scope.myFile;
         var uploadUrl = "/multer";
         var fd = new FormData();
         fd.append('file', file);
 
-        $http.post(uploadUrl,fd, {
+        $http.post(uploadUrl, fd, {
             transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
+            headers: { 'Content-Type': undefined }
         }).then(function successCallback(response) {
             console.log(response.data);
             let data = response.data;
-            $scope.model.thumbnail = "./images/"+data.filename;
+            $scope.model.thumbnail = "./images/" + data.filename;
+            $("#fileInput").val("");
+            $("#modalDlg").modal("show");
         }, function errorCallback(response) {
             console.log(response);
         });
@@ -62,6 +78,7 @@ app.controller("addCtrl", function ($scope, $http, $window) {
             "thumbnail": "",
             "published": false
         }
+        $("#fileInput").val("");
     }
     $scope.init();
 });
@@ -69,15 +86,15 @@ app.controller("addCtrl", function ($scope, $http, $window) {
 app.directive('fileModel', ['$parse', function ($parse) {
     return {
         restrict: 'A',
-        link: function(scope, element, attrs) {
+        link: function (scope, element, attrs) {
             var model = $parse(attrs.fileModel);
             var modelSetter = model.assign;
-    
-            element.bind('change', function(){
-                scope.$apply(function(){
+
+            element.bind('change', function () {
+                scope.$apply(function () {
                     modelSetter(scope, element[0].files[0]);
                 });
             });
         }
     };
-    }]);
+}]);

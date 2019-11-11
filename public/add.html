@@ -24,7 +24,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">EduLer</a>
+                <a class="navbar-brand" href="index.html">EduLer</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             </div>
@@ -34,6 +34,7 @@
         <h1 class="text-center">
             Create Model
         </h1>
+        <a href="index.html" class="btn btn-primary pull-right">Back</a>
     </div>
     <div class="col-sm-6 col-sm-offset-3">
         <form class="form-horizontal">
@@ -70,8 +71,8 @@
                 <div class="col-sm-10">
                     <!-- <input type="text" class="form-control" id="thumbnail" placeholder="Thumbnail"
                         ng-model="model.thumbnail"> -->
-                        <input type="file" file-model="myFile"/><br><br>
-                        <button ng-click="uploadFile()">Upload</button>
+                    <input type="file" file-model="myFile" id="fileInput" /><br><br>
+                    <button ng-click="uploadFile()">Upload</button>
                 </div>
             </div>
             <div class="form-group">
@@ -92,6 +93,23 @@
                 </div>
             </div>
         </form>
+    </div>
+
+    <div id="modalDlg" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div id="msg"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
